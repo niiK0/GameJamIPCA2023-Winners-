@@ -21,7 +21,7 @@ public class EnemyMovement : MonoBehaviour
     public float chasePhoneSpeed = 4f;
     public float jumpForce = 4f;
 
-    public float detectionRadius = 2.5f;
+    public Vector2 detectionSize = new Vector2(7f, 1f);
     public LayerMask detectionLayerMask;
     public float moveDirection = 1;
 
@@ -45,6 +45,12 @@ public class EnemyMovement : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player").transform;
         startPosition = transform.position;
     }
+
+    //private void OnDrawGizmos()
+    //{
+    //    Gizmos.DrawCube(transform.position, detectionSize);
+    //    Gizmos.color = new Color(1f, 0f, 0f, 0.3f);
+    //}
 
     void Update()
     {
@@ -71,7 +77,7 @@ public class EnemyMovement : MonoBehaviour
                 break;
         }
 
-        if (Physics2D.OverlapCircle(transform.position, detectionRadius, detectionLayerMask) != null)
+        if (Physics2D.OverlapBox(transform.position, detectionSize, 0f, detectionLayerMask) != null)
         {
             if (state == EnemyState.Patroling || state == EnemyState.Returning)
             {
@@ -89,36 +95,41 @@ public class EnemyMovement : MonoBehaviour
     {
         state = EnemyState.Idle;
         rb.velocity = new Vector2(0f, rb.velocity.y);
-        anim.SetTrigger("idle");
+        //anim.SetTrigger("idle");
     }
 
     private void EnterReturningState()
     {
         state = EnemyState.Returning;
         moveDirection = startPosition.x < transform.position.x ? -1 : 1;
-        anim.SetTrigger("return");
+        //anim.SetTrigger("return");
     }
 
     private void EnterPatrolState()
     {
         state = EnemyState.Patroling;
         changeDirectionTimer = timeToChangeDir;
-        anim.SetTrigger("patrol");
+        //anim.SetTrigger("patrol");
     }
 
     private void EnterChasingState()
     {
         state = EnemyState.Chasing;
-        anim.SetTrigger("chasePlayer");
+        //anim.SetTrigger("chasePlayer");
     }
 
-    public void EnterPhoneChasingState(Vector2 phonePosition)
+    public void ExitPhoneChaseState()
     {
-        if(state != EnemyState.PhoneChasing || state != EnemyState.PhoneUse)
+        EnterReturningState();
+    }
+
+    public void EnterPhoneChasingState(Transform phoneTransform)
+    {
+        if(state != EnemyState.PhoneChasing && state != EnemyState.PhoneUse)
         {
             state = EnemyState.PhoneChasing;
-            moveDirection = phonePosition.x < transform.position.x ? -1 : 1;
-            anim.SetTrigger("chasePhone");
+            moveDirection = phoneTransform.position.x < transform.position.x ? -1 : 1;
+            //anim.SetTrigger("chasePhone");
         }
     }
 
@@ -127,6 +138,7 @@ public class EnemyMovement : MonoBehaviour
         state = EnemyState.PhoneUse;
         rb.velocity = new Vector2(0f, rb.velocity.y);
         anim.SetTrigger("usePhone");
+        gameObject.layer = LayerMask.NameToLayer("EnemyPhone");
     }
 
     private void ChangePatrolDirection()
@@ -138,6 +150,7 @@ public class EnemyMovement : MonoBehaviour
     private void LeavePhoneUseState()
     {
         if(state == EnemyState.PhoneUse) EnterReturningState();
+        gameObject.layer = LayerMask.NameToLayer("Enemy");
     }
 
     private void FixedUpdate()
@@ -164,7 +177,7 @@ public class EnemyMovement : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.transform == player)
+        if (collision.transform ==  player)
         {
             EnterIdleState();
             //send message to player that it hit you    
