@@ -5,6 +5,7 @@ using UnityEngine;
 [RequireComponent(typeof(BoxCollider2D))]
 public class PickupInput : MonoBehaviour
 {
+    public GameObject pickUpVFX;
     public InputFunction keyFunctionToGive;
     public LayerMask playerLayer;
 
@@ -24,6 +25,8 @@ public class PickupInput : MonoBehaviour
         if (playerInput)
         {
             playerInput.AddInputObject(keyFunctionToGive);
+            var vfx = Instantiate(pickUpVFX,transform.position,Quaternion.identity);
+            Destroy(vfx, 2.0f);
             Destroy(gameObject);
         }
 
