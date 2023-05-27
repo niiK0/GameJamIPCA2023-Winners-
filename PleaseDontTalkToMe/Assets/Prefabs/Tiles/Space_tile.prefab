@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8746984140607545341}
   - component: {fileID: 5621502902509973409}
   - component: {fileID: 7764170972036426236}
-  - component: {fileID: -7390866476503875232}
+  - component: {fileID: 1286445817902254218}
   m_Layer: 8
   m_Name: Space_tile
   m_TagString: Untagged
@@ -125,7 +125,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1000
+  m_Mass: 3000
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 1
@@ -134,19 +134,23 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 0
---- !u!111 &-7390866476503875232
-Animation:
+--- !u!95 &1286445817902254218
+Animator:
+  serializedVersion: 5
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2946467667928977976}
   m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 7400000, guid: 52ebeb028950a144a98146dac93d94e6, type: 2}
-  m_Animations:
-  - {fileID: 7400000, guid: 52ebeb028950a144a98146dac93d94e6, type: 2}
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 6647f4ca6511751428ee41af127b71e4, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0

@@ -7,6 +7,7 @@ public class PhoneHandler : MonoBehaviour
 {
     public LayerMask fallStopLayers;
     public LayerMask enemyLayer;
+    public GameObject rangeEffect;
 
     public float lifeTime = 5f;
     public bool isRinging = false;
@@ -20,7 +21,7 @@ public class PhoneHandler : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         //Set rb force
-
+        rangeEffect.transform.localScale *= detectionSize.x;
         rb.AddTorque(torqueForce);
     }
 
@@ -61,6 +62,7 @@ public class PhoneHandler : MonoBehaviour
         rb.angularVelocity = 0f;
         rb.velocity = Vector2.zero;
         isRinging = true;
+        rangeEffect.SetActive(true);
         GetComponent<Animator>().enabled = true;
     }
 
