@@ -5,10 +5,11 @@ using UnityEngine;
 
 public enum EnemyState
 {
+    Idle,
     Patroling,
     Chasing,
     Returning,
-    ChasingPhone,
+    PhoneChasing,
     PhoneUse
 }
 
@@ -27,6 +28,8 @@ public class EnemyMovement : MonoBehaviour
     public float timeToChangeDir;
     private float changeDirectionTimer;
 
+    public Animator anim;
+
     private Vector3 startPosition;
 
     public EnemyState state = EnemyState.Patroling;
@@ -38,6 +41,7 @@ public class EnemyMovement : MonoBehaviour
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        anim = GetComponent<Animator>();
         player = GameObject.FindGameObjectWithTag("Player").transform;
         startPosition = transform.position;
     }
@@ -47,23 +51,19 @@ public class EnemyMovement : MonoBehaviour
         switch (state)
         {
             case EnemyState.Chasing:
+                if (Vector2.Distance(transform.position, player.position) <= 0.1f)
+                {
+                    Debug.Log("Hit the player");
+                }
+                break;
+
+            case EnemyState.Patroling:
                 changeDirectionTimer -= Time.deltaTime;
 
                 if (changeDirectionTimer <= 0) ChangePatrolDirection();
                 break;
 
-            case EnemyState.Patroling:
-                rb.velocity = new Vector2(patrolSpeed * moveDirection, rb.velocity.y);
-                break;
-
             case EnemyState.Returning:
-                if (Vector2.Distance(transform.position, startPosition) <= 0.1f)
-                {
-                    EnterPatrolState();
-                }
-                break;
-
-            case EnemyState.ChasingPhone:
                 if (Vector2.Distance(transform.position, startPosition) <= 0.1f)
                 {
                     EnterPatrolState();
@@ -85,45 +85,59 @@ public class EnemyMovement : MonoBehaviour
         }
     }
 
+    private void EnterIdleState()
+    {
+        state = EnemyState.Idle;
+        rb.velocity = new Vector2(0f, rb.velocity.y);
+        anim.SetTrigger("idle");
+    }
+
     private void EnterReturningState()
     {
         state = EnemyState.Returning;
         moveDirection = startPosition.x < transform.position.x ? -1 : 1;
+        anim.SetTrigger("return");
     }
 
     private void EnterPatrolState()
     {
         state = EnemyState.Patroling;
-        changeDirectionTimer = 0f;
+        changeDirectionTimer = timeToChangeDir;
+        anim.SetTrigger("patrol");
     }
 
     private void EnterChasingState()
     {
         state = EnemyState.Chasing;
+        anim.SetTrigger("chasePlayer");
     }
 
-    public void EnterChasingPhoneState(Vector2 phonePosition)
+    public void EnterPhoneChasingState(Vector2 phonePosition)
     {
-        state = EnemyState.ChasingPhone;
-        moveDirection = phonePosition.x < transform.position.x ? -1 : 1;
+        if(state != EnemyState.PhoneChasing || state != EnemyState.PhoneUse)
+        {
+            state = EnemyState.PhoneChasing;
+            moveDirection = phonePosition.x < transform.position.x ? -1 : 1;
+            anim.SetTrigger("chasePhone");
+        }
     }
 
-    public void EnterPhoneUseState(Vector2 phonePosition)
+    public void EnterPhoneUseState()
     {
         state = EnemyState.PhoneUse;
-        //Do phone animation
+        rb.velocity = new Vector2(0f, rb.velocity.y);
+        anim.SetTrigger("usePhone");
     }
-
-    //private void OnDrawGizmos()
-    //{
-    //    Gizmos.color = new Color(1, 0, 0, 0.3f);
-    //    Gizmos.DrawSphere(transform.position, detectionRadius);
-    //}
 
     private void ChangePatrolDirection()
     {
         changeDirectionTimer = timeToChangeDir;
         moveDirection = -moveDirection;
+    }
+
+    private void LeavePhoneUseState()
+    {
+        if(state == EnemyState.PhoneUse) EnterReturningState();
     }
 
     private void FixedUpdate()
@@ -142,17 +156,18 @@ public class EnemyMovement : MonoBehaviour
                 rb.velocity = new Vector2(returningSpeed * moveDirection, rb.velocity.y);
                 break;
 
-            case EnemyState.ChasingPhone:
+            case EnemyState.PhoneChasing:
                 rb.velocity = new Vector2(chasePhoneSpeed * moveDirection, rb.velocity.y);
-                break;
-            case EnemyState.PhoneUse:
-                rb.velocity = new Vector2(0f, rb.velocity.y);
                 break;
         }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.transform == player) Destroy(this);
+        if (collision.transform == player)
+        {
+            EnterIdleState();
+            //send message to player that it hit you    
+        }
     }
 }
