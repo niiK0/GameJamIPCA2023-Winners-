@@ -55,7 +55,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6188168582330851203}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.97, z: 0}
+  m_LocalPosition: {x: 0, y: -0.689, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -124,7 +124,7 @@ MonoBehaviour:
   _whatIsGround:
     serializedVersion: 2
     m_Bits: 320
-  _groundCheckRadius: 0.05
+  _groundCheckRadius: 0.2
   _headCheckDistance: 0.1
   _rbVelocity: {x: 0, y: 0}
   _activateGizmos: 1
@@ -175,14 +175,16 @@ MonoBehaviour:
     uiView: {fileID: 21300000, guid: 5c518c0587562444488144a7a3320387, type: 3}
     resolution: {x: 100, y: 100}
     keyTile: {fileID: 5013947756805215827, guid: 5651a187948cc844bbc06c760f074a5e, type: 3}
+    imNull: 0
   moveLeft:
     keyCode: 97
-    isAvailable: 1
+    isAvailable: 0
     function: 2
-    inputCount: 1
-    uiView: {fileID: 21300000, guid: 362c79312f167534b8592c23ce2a836e, type: 3}
+    inputCount: 0
+    uiView: {fileID: 21300000, guid: 9b398d5f54250cf4f8ce715f2ad50eb7, type: 3}
     resolution: {x: 100, y: 100}
-    keyTile: {fileID: 5013947756805215827, guid: 5651a187948cc844bbc06c760f074a5e, type: 3}
+    keyTile: {fileID: 5013947756805215827, guid: c470deb006484cb4192e07e075d861be, type: 3}
+    imNull: 0
   jump:
     keyCode: 32
     isAvailable: 0
@@ -191,6 +193,7 @@ MonoBehaviour:
     uiView: {fileID: 21300000, guid: 6ebecb9a7326df347b70d7b5bd38015e, type: 3}
     resolution: {x: 300, y: 100}
     keyTile: {fileID: 2946467667928977976, guid: 17b46a9b666874a459c912109ab3a485, type: 3}
+    imNull: 0
   throwObject:
     keyCode: 304
     isAvailable: 1
@@ -198,7 +201,9 @@ MonoBehaviour:
     inputCount: 1
     uiView: {fileID: 21300000, guid: 588703022241f7744a380f8970376891, type: 3}
     resolution: {x: 200, y: 100}
-    keyTile: {fileID: 5013947756805215827, guid: 5651a187948cc844bbc06c760f074a5e, type: 3}
+    keyTile: {fileID: 2946467667928977976, guid: ad56805e60f84f949851ca3782e101cc, type: 3}
+    imNull: 0
+  levelInputInfo: {fileID: 11400000, guid: 84e24ea143e7fa6409f3c4b40ec0f7b6, type: 2}
 --- !u!61 &1743726108
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -237,7 +242,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 122bb6ed4bd8f86449fd0252fbe6bedf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  phoneGO: {fileID: 5502737676849328869, guid: 1ea3351094550ca42b453d1087953b8c, type: 3}
+  phoneGO: {fileID: 2860022025246936097, guid: e5e4d925fb3126d4cbe31d8e4bbb4f20, type: 3}
   firePoint: {fileID: 1782179450}
   phoneCharges: 1
   minForce: 10

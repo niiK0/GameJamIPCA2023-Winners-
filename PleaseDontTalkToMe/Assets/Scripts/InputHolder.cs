@@ -10,6 +10,21 @@ public class InputHolder : MonoBehaviour
     public KeyObject jump;
     public KeyObject throwObject;
 
+    public LevelStartInputs levelInputInfo;
+
+    private void Start()
+    {
+        LoadLevelInputInfo();
+    }
+
+    private void LoadLevelInputInfo()
+    {
+        foreach (var item in levelInputInfo.startInputs)
+        {
+            AddInputObject(item);
+        }
+    }
+
     public void AddInputObject(InputFunction newInput)
     {
         switch (newInput)
@@ -37,6 +52,30 @@ public class InputHolder : MonoBehaviour
         RefreshAvailability();
     }
 
+    public void RemoveInputObject(KeyObject keyObject)
+    {
+        InputFunction temp = keyObject.function;
+
+        switch (temp)
+        {
+            case InputFunction.Jump:
+                jump.inputCount--;
+                break;
+            case InputFunction.Throw:
+                throwObject.inputCount--;
+                break;
+            case InputFunction.MoveLeft:
+                moveLeft.inputCount--;
+                break;
+            case InputFunction.MoveRight:
+                moveRight.inputCount--;
+                break;
+            default:
+                break;
+        }
+        RefreshAvailability();
+    }
+
     public void RefreshAvailability()
     {
         if (moveRight.inputCount <= 0) moveRight.isAvailable = false;
@@ -60,6 +99,7 @@ public struct KeyObject
     public Sprite uiView;
     public Vector2 resolution;
     public GameObject keyTile;
+    public bool imNull;
 }
 
 public enum InputFunction
