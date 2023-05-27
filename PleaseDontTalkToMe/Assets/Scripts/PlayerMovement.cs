@@ -6,6 +6,7 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] float _speed;
+    private float initialSpeed;
     [SerializeField] float _airSpeedLoss = 0f;
     Vector2 _movementDirection;
     Rigidbody2D _rb;
@@ -32,6 +33,12 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] bool _activateGizmos;
     [SerializeField] Color _gizmosColor = Color.red;
 
+    [Header("Improvements")]
+    public float sidewaysWallCheckRaius = 1.0f;
+    public float forwardOffset = 1.0f;
+    public float checkHeight = 1.0f;
+    [Range(0, 1)] public float speedReduction;
+
     [Header("Rotation")]
     [SerializeField] bool _facingRight = true;
 
@@ -44,6 +51,7 @@ public class PlayerMovement : MonoBehaviour
         //_anim = GetComponent<Animator>();
         _coyoteTimer = _coyoteTime;
         _inputTimer = _inputBufferDuration;
+        initialSpeed = _speed;
     }
 
     // Update is called once per frame
@@ -78,7 +86,7 @@ public class PlayerMovement : MonoBehaviour
             _coyoteTimer = 0f;
         }
 
-
+        CheckSides();
 
     }
 
@@ -125,12 +133,25 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
+    private void CheckSides()
+    {
+        Vector3 checkDirection = new Vector3(_movementDirection.x, _movementDirection.y, 0);
+
+        if (Physics2D.OverlapCircle(transform.position + Vector3.up * checkHeight + checkDirection * forwardOffset, sidewaysWallCheckRaius, _whatIsGround))
+        {
+            _speed = 0;
+        }
+        else _speed = initialSpeed;
+    }
+
+
     private void OnDrawGizmos()
     {
         if (!_activateGizmos) return;
 
         Gizmos.color = _gizmosColor;
         Gizmos.DrawSphere(_groundCheck.position, _groundCheckRadius);
+        Gizmos.DrawSphere(transform.position + Vector3.up * checkHeight, sidewaysWallCheckRaius);
     }
 
 }

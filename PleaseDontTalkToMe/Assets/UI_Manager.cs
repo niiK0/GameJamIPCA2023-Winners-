@@ -10,6 +10,7 @@ public class UI_Manager : MonoBehaviour
     public Image[] keyUISlots;
     public int occupiedSlots = 0;
     public int lastOccupiedSlot = -1;
+    public Image currentSelectedKey;
 
     private void Awake()
     {
@@ -35,12 +36,32 @@ public class UI_Manager : MonoBehaviour
         lastOccupiedSlot++;
     }
 
+
+
+    //public void RemoveSelectedKey()
+    //{
+    //    for (int i = 0; i < keyUISlots.Length; i++)
+    //    {
+    //        if (currentSelectedKey == keyUISlots[i])
+    //        {
+    //            keyUISlots[i] = null;
+    //            currentSelectedKey = null;
+    //        }
+    //    }
+    //}
+
     public void SelectKey(int slotID)
     {
-        Transform keySlot = keyUISlots[slotID].transform;
-        keySlot.GetComponent<KeyTileSpawner>()._spawnReady = true;
+        currentSelectedKey = keyUISlots[slotID];
 
-        keySlot.GetComponent<Animator>().SetBool("Selected", true);
+        currentSelectedKey.GetComponent<KeyTileSpawner>()._spawnReady = true;
+
+        currentSelectedKey.GetComponent<Animator>().SetBool("Selected", true);
+
+        //Transform keySlot = keyUISlots[slotID].transform;
+        //keySlot.GetComponent<KeyTileSpawner>()._spawnReady = true;
+
+        //keySlot.GetComponent<Animator>().SetBool("Selected", true);
 
     }
 }
