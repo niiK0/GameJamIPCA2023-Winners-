@@ -1,5 +1,36 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1782179449
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1782179450}
+  m_Layer: 7
+  m_Name: Firepoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1782179450
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1782179449}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 2, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6188168582751032337}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6188168582330851203
 GameObject:
   m_ObjectHideFlags: 0
@@ -43,6 +74,8 @@ GameObject:
   - component: {fileID: 6188168582751032342}
   - component: {fileID: 6188168582751032343}
   - component: {fileID: 6188168582751032341}
+  - component: {fileID: 1743726108}
+  - component: {fileID: 1743726112}
   m_Layer: 7
   m_Name: Player
   m_TagString: Untagged
@@ -64,6 +97,7 @@ Transform:
   m_Children:
   - {fileID: 6188168583426811466}
   - {fileID: 6188168582764014929}
+  - {fileID: 1782179450}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -95,6 +129,10 @@ MonoBehaviour:
   _rbVelocity: {x: 0, y: 0}
   _activateGizmos: 1
   _gizmosColor: {r: 1, g: 0, b: 0, a: 1}
+  sidewaysWallCheckRaius: 0.34
+  forwardOffset: 0.2
+  checkHeight: 0
+  speedReduction: 0
   _facingRight: 1
 --- !u!50 &6188168582751032343
 Rigidbody2D:
@@ -134,7 +172,7 @@ MonoBehaviour:
     isAvailable: 0
     function: 3
     inputCount: 0
-    uiView: {fileID: 21300000, guid: f3b48d6ac7615264b8ae1663e6eb2f80, type: 3}
+    uiView: {fileID: 21300000, guid: 5c518c0587562444488144a7a3320387, type: 3}
     resolution: {x: 100, y: 100}
     keyTile: {fileID: 5013947756805215827, guid: 5651a187948cc844bbc06c760f074a5e, type: 3}
   moveLeft:
@@ -150,7 +188,7 @@ MonoBehaviour:
     isAvailable: 0
     function: 0
     inputCount: 0
-    uiView: {fileID: 21300000, guid: 650afd3a93137d847a924bb9d5dae8e1, type: 3}
+    uiView: {fileID: 21300000, guid: 6ebecb9a7326df347b70d7b5bd38015e, type: 3}
     resolution: {x: 300, y: 100}
     keyTile: {fileID: 2946467667928977976, guid: 17b46a9b666874a459c912109ab3a485, type: 3}
   throwObject:
@@ -158,9 +196,60 @@ MonoBehaviour:
     isAvailable: 1
     function: 1
     inputCount: 1
-    uiView: {fileID: 21300000, guid: 199246ed955094040b7206809cb61713, type: 3}
+    uiView: {fileID: 21300000, guid: 588703022241f7744a380f8970376891, type: 3}
     resolution: {x: 200, y: 100}
     keyTile: {fileID: 5013947756805215827, guid: 5651a187948cc844bbc06c760f074a5e, type: 3}
+--- !u!61 &1743726108
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6188168582751032336}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 6200000, guid: 45db0b0532f1be54797a2ce871b6f103, type: 2}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0.005205989}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.81, y: 1.8744025}
+  m_EdgeRadius: 0
+--- !u!114 &1743726112
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6188168582751032336}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 122bb6ed4bd8f86449fd0252fbe6bedf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  phoneGO: {fileID: 5502737676849328869, guid: 1ea3351094550ca42b453d1087953b8c, type: 3}
+  firePoint: {fileID: 1782179450}
+  phoneCharges: 1
+  minForce: 10
+  maxForce: 100
+  timeToMaxForce: 1
+  chargingThrow: 0
+  finalThrowForce: 0
+  chargeTimer: 0
+  throwDirection: {x: 0, y: 0, z: 0}
+  chargeBar: {fileID: 0}
+  minForceColor: {r: 0.9150943, g: 0.8150304, b: 0.5481933, a: 1}
+  maxForceColor: {r: 1, g: 0.5045581, b: 0, a: 1}
 --- !u!1 &6188168582764014928
 GameObject:
   m_ObjectHideFlags: 0
