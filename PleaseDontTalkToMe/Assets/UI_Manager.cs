@@ -22,6 +22,7 @@ public class UI_Manager : MonoBehaviour
 
         if (instance != null) Destroy(gameObject);
         else instance = this;
+        DontDestroyOnLoad(gameObject);
 
         keyObjects = new KeyObject[keyUISlots.Length];
         playerInputHolder = FindObjectOfType<InputHolder>();
@@ -59,6 +60,22 @@ public class UI_Manager : MonoBehaviour
                 keyUISlots[i].transform.GetComponent<RectTransform>().sizeDelta = keyObjects[i].resolution;
             }
         }
+    }
+
+    public void UnloadEveryKey()
+    {
+        for (int i = 0; i < keyObjects.Length; i++)
+        {
+            if (keyObjects[i].imNull) continue;
+
+            playerInputHolder.RemoveInputObject(keyObjects[i]);
+            keyObjects[i].imNull = true;
+            keyUISlots[i].enabled = false;
+            SendNullsToTheEnd();
+        }
+
+        occupiedSlots = 0;
+        UpdateUIView();
     }
 
     public void RemoveKeyObject(int keyToRemove)
@@ -167,7 +184,6 @@ public class UI_Manager : MonoBehaviour
         //Deselect current selected key if != null
         if (currentSelectedKey != null) RemoveSelectedKey();
 
-
         currentSelectedKey = keyUISlots[slotID];
 
         currentSelectedKey.GetComponent<KeyTileSpawner>()._spawnReady = true;
@@ -183,6 +199,7 @@ public class UI_Manager : MonoBehaviour
 
     public void RemoveSelectedKey()
     {
+        if (currentSelectedKey == null) return;
         currentSelectedKey.GetComponent<KeyTileSpawner>()._spawnReady = false;
         currentSelectedKey.GetComponent<Animator>().SetBool("Selected", false);
         currentSelectedKey = null;

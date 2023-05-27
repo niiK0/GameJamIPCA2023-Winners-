@@ -24,7 +24,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1782179449}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 2, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -55,7 +55,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6188168582330851203}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.689, z: 0}
+  m_LocalPosition: {x: 0, y: -0.793, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -78,7 +78,7 @@ GameObject:
   - component: {fileID: 1743726112}
   m_Layer: 7
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -124,12 +124,12 @@ MonoBehaviour:
   _whatIsGround:
     serializedVersion: 2
     m_Bits: 320
-  _groundCheckRadius: 0.2
+  _groundCheckRadius: 0.14
   _headCheckDistance: 0.1
   _rbVelocity: {x: 0, y: 0}
   _activateGizmos: 1
   _gizmosColor: {r: 1, g: 0, b: 0, a: 1}
-  sidewaysWallCheckRaius: 0.34
+  sidewaysWallCheckRaius: 0.28
   forwardOffset: 0.2
   checkHeight: 0
   speedReduction: 0
@@ -196,9 +196,9 @@ MonoBehaviour:
     imNull: 0
   throwObject:
     keyCode: 304
-    isAvailable: 1
+    isAvailable: 0
     function: 1
-    inputCount: 1
+    inputCount: 0
     uiView: {fileID: 21300000, guid: 588703022241f7744a380f8970376891, type: 3}
     resolution: {x: 200, y: 100}
     keyTile: {fileID: 2946467667928977976, guid: ad56805e60f84f949851ca3782e101cc, type: 3}

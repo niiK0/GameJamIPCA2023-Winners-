@@ -6,6 +6,12 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/NikoOld.unity
-    guid: 2cda990e2423bbf4892e6590ba056729
+    path: Assets/Scenes/MainMenu.unity
+    guid: 08e869a609387d34d8ce5a78854e73c1
+  - enabled: 1
+    path: Assets/Scenes/Tutorial.unity
+    guid: 3a3ec4ce244da8d4ba21dabba9d9a9f8
+  - enabled: 1
+    path: Assets/Scenes/Level1.unity
+    guid: 8695363e78d7d66448cb2a139ef65b3b
   m_configObjects: {}
