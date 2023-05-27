@@ -15,20 +15,25 @@ public class InputHolder : MonoBehaviour
         switch (newInput)
         {
             case InputFunction.Jump:
+                UI_Manager.instance.AddKeyObjectToUi(jump);
                 jump.inputCount++;
                 break;
             case InputFunction.Throw:
+                UI_Manager.instance.AddKeyObjectToUi(throwObject);
                 throwObject.inputCount++;
                 break;
             case InputFunction.MoveLeft:
+                UI_Manager.instance.AddKeyObjectToUi(moveLeft);
                 moveLeft.inputCount++;
                 break;
             case InputFunction.MoveRight:
+                UI_Manager.instance.AddKeyObjectToUi(moveRight);
                 moveRight.inputCount++;
                 break;
             default:
                 break;
         }
+        
         RefreshAvailability();
     }
 
@@ -52,7 +57,11 @@ public struct KeyObject
     public bool isAvailable;
     public InputFunction function;
     public int inputCount;
+    public Sprite uiView;
+    public Vector2 resolution;
+    public GameObject keyTile;
 }
+
 public enum InputFunction
 {
     Jump, Throw, MoveLeft, MoveRight
