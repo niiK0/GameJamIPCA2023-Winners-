@@ -8,9 +8,9 @@ public class PhoneHandler : MonoBehaviour
     public LayerMask fallStopLayers;
     public LayerMask enemyLayer;
 
-    public float lifeTime = 5;
+    public float lifeTime = 5f;
     public bool isRinging = false;
-    public float detectionRadius;
+    public Vector2 detectionSize = new Vector2(14f, 1f);
 
     public float torqueForce;
 
@@ -32,18 +32,34 @@ public class PhoneHandler : MonoBehaviour
 
     private void DetectEnemiesAround()
     {
-        Collider2D enemyFound = Physics2D.OverlapCircle(transform.position, detectionRadius, enemyLayer);
-        if(enemyFound != null)
+        lifeTime -= Time.deltaTime;
+
+        Collider2D enemyFound = Physics2D.OverlapBox(transform.position, detectionSize, 0f, enemyLayer);
+        if(enemyFound)
         {
-            if(enemyFound.GetComponent<EnemyMovement>() != null)
-                enemyFound.GetComponent<EnemyMovement>().EnterPhoneChasingState(transform.position);
+            EnemyMovement enemyMovement = enemyFound.GetComponent<EnemyMovement>();
+            if (enemyMovement)
+            {
+                enemyMovement.EnterPhoneChasingState(transform);
+
+                if (lifeTime <= 0f)
+                {
+                    enemyMovement.ExitPhoneChaseState();
+                }
+            }
+
+        }
+
+        if(lifeTime <= 0f)
+        {
+            Destroy(gameObject);
         }
     }
 
     private void PhoneHitTheGround()
     {
-        rb.Sleep();
-        rb.isKinematic = true;
+        rb.angularVelocity = 0f;
+        rb.velocity = Vector2.zero;
         isRinging = true;
         GetComponent<Animator>().enabled = true;
     }
@@ -57,10 +73,11 @@ public class PhoneHandler : MonoBehaviour
 
         if ((enemyLayer.value & (1 << collision.gameObject.layer)) != 0)
         {
-            if (collision.gameObject.GetComponent<EnemyMovement>() != null)
+            if (collision.gameObject.GetComponent<EnemyMovement>() != null) { 
                 isRinging = false;
                 collision.gameObject.GetComponent<EnemyMovement>().EnterPhoneUseState();
                 Destroy(gameObject);
+            }
         }
     }
 }
