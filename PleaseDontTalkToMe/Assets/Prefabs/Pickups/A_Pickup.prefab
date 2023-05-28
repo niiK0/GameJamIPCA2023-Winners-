@@ -74,7 +74,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pickUpVFX: {fileID: 2922570497691397443, guid: 0babae9fb694f7f47b99e28a48660911, type: 3}
-  keyFunctionToGive: 2
+  keyFunctionToGive: 3
   playerLayer:
     serializedVersion: 2
     m_Bits: 4224

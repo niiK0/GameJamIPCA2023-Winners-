@@ -18,6 +18,10 @@ public class UI_Manager : MonoBehaviour
 
     public TextMeshProUGUI phoneCharges;
 
+    public TextMeshProUGUI gameTimeText;
+    public TextMeshProUGUI attemptsText;
+    public TextMeshProUGUI levelText;
+
     private InputHolder playerInputHolder;
 
     private void Awake()

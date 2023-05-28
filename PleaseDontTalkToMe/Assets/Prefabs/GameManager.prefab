@@ -51,9 +51,6 @@ MonoBehaviour:
   restartInternalCw: 0
   finalGameTime: 0
   finalAttempts: 0
-  gameTimeText: {fileID: 0}
-  attemptsText: {fileID: 0}
-  levelText: {fileID: 0}
   levels:
   - id: 1
     name: Tutorial

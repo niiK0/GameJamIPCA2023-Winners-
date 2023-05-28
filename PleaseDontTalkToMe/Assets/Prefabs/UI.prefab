@@ -3130,6 +3130,9 @@ MonoBehaviour:
   lastOccupiedSlot: -1
   currentSelectedKey: {fileID: 0}
   phoneCharges: {fileID: 1009383334721996261}
+  gameTimeText: {fileID: 2053173592603560390}
+  attemptsText: {fileID: 1555825606387778811}
+  levelText: {fileID: 1667421625202712600}
 --- !u!1 &8879358190927112564
 GameObject:
   m_ObjectHideFlags: 0

@@ -9,7 +9,7 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager instance = null;
 
-    public int currentLevel = 1;
+    public int currentLevel = 0;
     public int attemptsCount = 1;
 
     public float restartCw = 5f;
@@ -21,9 +21,6 @@ public class GameManager : MonoBehaviour
     public float finalAttempts = 0f;
 
     private float seconds, minutes;
-    public TextMeshProUGUI gameTimeText;
-    public TextMeshProUGUI attemptsText;
-    public TextMeshProUGUI levelText;
 
     public Level[] levels;
 
@@ -37,7 +34,7 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        gameTimeText.text = "00:00";
+        UI_Manager.instance.gameTimeText.text = "00:00";
         UpdateUI();
     }
 
@@ -62,7 +59,7 @@ public class GameManager : MonoBehaviour
 
     public LevelStartInputs GetCurrentLevelInputInfo()
     {
-        return levels[currentLevel-1].levelInputInfo;
+        return levels[currentLevel].levelInputInfo;
     }
 
     private void Timer()
@@ -70,7 +67,7 @@ public class GameManager : MonoBehaviour
         gameTime += Time.deltaTime;
         seconds = (int)(gameTime % 60);
         minutes = (int)(gameTime / 60 % 60);
-        gameTimeText.text = minutes.ToString("00") + ":" + seconds.ToString("00");
+        UI_Manager.instance.gameTimeText.text = minutes.ToString("00") + ":" + seconds.ToString("00");
     }
 
     public void RetryLevel()
@@ -78,14 +75,16 @@ public class GameManager : MonoBehaviour
         attemptsCount++;
         restartInternalCw = restartCw;
         UI_Manager.instance.UnloadEveryKey();
+        //Destroy(FindObjectOfType<PlayerMovement>().gameObject);
         GetComponent<LoadingScreen>().LoadScene(currentLevel);
         UpdateUI();
     }
 
     public void UpdateUI()
     {
-        attemptsText.text = "Attempt " + attemptsCount.ToString();
-        levelText.text = "<b>Level " + currentLevel + " : </b>" + levels[currentLevel-1].name;
+        if(UI_Manager.instance.attemptsText == null || UI_Manager.instance.levelText == null) return;
+        UI_Manager.instance.attemptsText.text = "Attempt " + attemptsCount.ToString();
+        UI_Manager.instance.levelText.text = "<b>Level " + (currentLevel + 1)+ " : </b>" + levels[currentLevel].name;
     }
 
     public void PlayerDied()
