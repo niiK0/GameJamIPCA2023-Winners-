@@ -28,11 +28,13 @@ public class ThrowPhone : MonoBehaviour
 
     [Header("Requirements")]
     private InputHolder inputHolder;
+    Animator anim;
 
 
     private void Awake()
     {
         inputHolder = GetComponent<InputHolder>();  
+        anim = GetComponent<Animator>();
     }
     private void Update()
     {
@@ -60,7 +62,8 @@ public class ThrowPhone : MonoBehaviour
         throwDirection = CalculateThrowDirection();
 
         //Animation Event part
-        LaunchPhone();
+        anim.SetTrigger("Throw");
+        //LaunchPhone();
 
         chargingThrow = false;
         chargeTimer = 0;

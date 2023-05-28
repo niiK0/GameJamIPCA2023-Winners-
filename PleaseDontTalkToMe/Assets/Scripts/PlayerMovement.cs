@@ -48,7 +48,7 @@ public class PlayerMovement : MonoBehaviour
     {
         _rb = GetComponent<Rigidbody2D>();
         _inputHolder = GetComponent<InputHolder>(); 
-        //_anim = GetComponent<Animator>();
+        _anim = GetComponent<Animator>();
         _coyoteTimer = _coyoteTime;
         _inputTimer = _inputBufferDuration;
         initialSpeed = _speed;
@@ -76,7 +76,7 @@ public class PlayerMovement : MonoBehaviour
 
         if (_coyoteTimer > 0f && _inputTimer > 0)
         {
-            _anim?.SetBool("isJumping", true);
+            _anim?.SetBool("isJumping",true);
             _rb.velocity = new Vector2(_rbVelocity.x, _jumpForce);
         }
 
