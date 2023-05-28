@@ -14,8 +14,22 @@ public class InputHolder : MonoBehaviour
 
     private void Start()
     {
+        ResetThings();
         levelInputInfo = GameManager.instance.GetCurrentLevelInputInfo();
         LoadLevelInputInfo();
+    }
+
+    private void ResetThings()
+    {
+        moveRight.inputCount = 0;
+        moveRight.isAvailable = false;
+        moveLeft.inputCount = 0;
+        moveLeft.isAvailable = false;
+        jump.inputCount = 0;
+        jump.isAvailable = false;
+        throwObject.inputCount = 0;
+        throwObject.isAvailable = false;
+
     }
 
     private void LoadLevelInputInfo()
