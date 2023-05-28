@@ -16,6 +16,7 @@ public class GameManager : MonoBehaviour
     public float restartInternalCw;
 
     private float gameTime;
+
     private float seconds, minutes;
     public TextMeshProUGUI gameTimeText;
 
@@ -43,8 +44,19 @@ public class GameManager : MonoBehaviour
         }
 
         if (Input.GetKeyDown(KeyCode.R) && restartInternalCw <= 0) RetryLevel();
+        if (Input.GetKeyDown(KeyCode.H))
+        {
+            currentLevel++;
+            UI_Manager.instance.UnloadEveryKey();
+            GetComponent<LoadingScreen>().LoadScene(currentLevel);
+        }
 
         Timer();
+    }
+
+    public LevelStartInputs GetCurrentLevelInputInfo()
+    {
+        return levels[currentLevel-1].levelInputInfo;
     }
 
     private void Timer()

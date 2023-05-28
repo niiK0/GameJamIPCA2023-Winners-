@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 21454038cb4db4648b0be418fb19ad6c, type: 3}
   m_Name: Level2
   m_EditorClassIdentifier: 
-  startInputs: 02000000
+  startInputs: 00000000

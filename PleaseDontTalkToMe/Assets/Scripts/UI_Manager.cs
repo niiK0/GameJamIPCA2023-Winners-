@@ -69,12 +69,13 @@ public class UI_Manager : MonoBehaviour
     {
         for (int i = 0; i < keyObjects.Length; i++)
         {
-            if (keyObjects[i].imNull) continue;
+            if (!keyObjects[i].imNull)
+            {
+                playerInputHolder.RemoveInputObject(keyObjects[i]);
+                keyObjects[i].imNull = true;
+                keyUISlots[i].enabled = false;
+            }
 
-            playerInputHolder.RemoveInputObject(keyObjects[i]);
-            keyObjects[i].imNull = true;
-            keyUISlots[i].enabled = false;
-            SendNullsToTheEnd();
         }
 
         occupiedSlots = 0;

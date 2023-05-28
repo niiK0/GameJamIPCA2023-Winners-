@@ -14,6 +14,7 @@ public class InputHolder : MonoBehaviour
 
     private void Start()
     {
+        levelInputInfo = GameManager.instance.GetCurrentLevelInputInfo();
         LoadLevelInputInfo();
     }
 

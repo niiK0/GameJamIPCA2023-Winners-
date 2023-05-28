@@ -5019,7 +5019,7 @@ MonoBehaviour:
     resolution: {x: 160, y: 101}
     keyTile: {fileID: 2946467667928977976, guid: ad56805e60f84f949851ca3782e101cc, type: 3}
     imNull: 0
-  levelInputInfo: {fileID: 11400000, guid: 84e24ea143e7fa6409f3c4b40ec0f7b6, type: 2}
+  levelInputInfo: {fileID: 0}
 --- !u!61 &1743726108
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -5178,7 +5178,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 6188168582751032337}
   m_RootOrder: 0
@@ -5221,18 +5221,18 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 1152953615
+  m_SortingLayer: 2
   m_SortingOrder: 1
-  m_Sprite: {fileID: 816614063, guid: ae317ab2a80a22e4994f97ee8ce1b5e1, type: 3}
+  m_Sprite: {fileID: 52816228, guid: 85d808fd58dd35a43a31f112d7721f11, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 2.85, y: 3.4}
+  m_Size: {x: 1.52, y: 3.4}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &6188168583724288744
