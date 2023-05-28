@@ -73,7 +73,7 @@ public class GameManager : MonoBehaviour
         gameTimeText.text = minutes.ToString("00") + ":" + seconds.ToString("00");
     }
 
-    private void RetryLevel()
+    public void RetryLevel()
     {
         attemptsCount++;
         restartInternalCw = restartCw;
@@ -85,12 +85,22 @@ public class GameManager : MonoBehaviour
     public void UpdateUI()
     {
         attemptsText.text = "Attempt " + attemptsCount.ToString();
-        levelText.text = "Level " + currentLevel + " - " + levels[currentLevel-1].name;
+        levelText.text = "<b>Level " + currentLevel + " : </b>" + levels[currentLevel-1].name;
     }
 
     public void PlayerDied()
     {
+        //maybe do smt else if needed ?
         RetryLevel();
+    }
+
+    public void RetryButtonHoverIn(RectTransform imageSize)
+    {
+        imageSize.sizeDelta = new Vector2(90f, 90f);
+    }
+    public void RetryButtonHoverOut(RectTransform imageSize)
+    {
+        imageSize.sizeDelta = new Vector2(80f, 80f);
     }
 }
 

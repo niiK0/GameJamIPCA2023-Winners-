@@ -184,7 +184,7 @@ public class EnemyMovement : MonoBehaviour
         if (collision.transform ==  player)
         {
             EnterIdleState();
-            //send message to player that it hit you    
+            GameManager.instance.PlayerDied();  
         }
     }
 }
