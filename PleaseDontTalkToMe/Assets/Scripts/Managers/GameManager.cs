@@ -70,6 +70,13 @@ public class GameManager : MonoBehaviour
         UI_Manager.instance.gameTimeText.text = minutes.ToString("00") + ":" + seconds.ToString("00");
     }
 
+    public void NextLevel()
+    {
+        currentLevel++;
+        UI_Manager.instance.UnloadEveryKey();
+        GetComponent<LoadingScreen>().LoadScene(currentLevel);
+    }
+
     public void RetryLevel()
     {
         attemptsCount++;
