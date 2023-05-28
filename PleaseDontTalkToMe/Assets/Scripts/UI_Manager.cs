@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using System.Linq;
 using System;
+using TMPro;
 
 public class UI_Manager : MonoBehaviour
 {
@@ -14,6 +15,8 @@ public class UI_Manager : MonoBehaviour
     public int occupiedSlots = 0;
     public int lastOccupiedSlot = -1;
     public Image currentSelectedKey;
+
+    public TextMeshProUGUI phoneCharges;
 
     private InputHolder playerInputHolder;
 
@@ -75,6 +78,7 @@ public class UI_Manager : MonoBehaviour
         }
 
         occupiedSlots = 0;
+        phoneCharges.text = 0.ToString();
         UpdateUIView();
     }
 

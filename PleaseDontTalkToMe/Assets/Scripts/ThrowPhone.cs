@@ -43,7 +43,7 @@ public class ThrowPhone : MonoBehaviour
         }
         else chargeBar.transform.parent.gameObject.SetActive(false);
 
-        if (inputHolder.throwObject.isAvailable && Input.GetKeyDown(inputHolder.throwObject.keyCode)) StartCharging();
+        if (inputHolder.throwObject.isAvailable && Input.GetKeyDown(inputHolder.throwObject.keyCode) && phoneCharges > 0) StartCharging();
         if (chargingThrow && Input.GetKeyUp(inputHolder.throwObject.keyCode)) FinishCharging();
 
         chargeBar.fillAmount = chargeTimer / timeToMaxForce;
@@ -70,6 +70,14 @@ public class ThrowPhone : MonoBehaviour
     {
         var phone = Instantiate(phoneGO, firePoint.position, Quaternion.identity);
         phone.GetComponent<Rigidbody2D>().AddForce(throwDirection * finalThrowForce);
+        phoneCharges--;
+        UI_Manager.instance.phoneCharges.text = phoneCharges.ToString();
+    }
+
+    public void AddAmmo()
+    {
+        phoneCharges++;
+        UI_Manager.instance.phoneCharges.text = phoneCharges.ToString();
     }
 
     private Vector3 CalculateThrowDirection()
