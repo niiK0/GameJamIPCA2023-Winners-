@@ -1568,8 +1568,24 @@ PrefabInstance:
       propertyPath: moveRight.isAvailable
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6188168582751032342, guid: 060549d44f2bbaf4a8e8954f0eefcc3a, type: 3}
+      propertyPath: _activateGizmos
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6188168582764014928, guid: 060549d44f2bbaf4a8e8954f0eefcc3a, type: 3}
       propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6188168583426811467, guid: 060549d44f2bbaf4a8e8954f0eefcc3a, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6188168583426811467, guid: 060549d44f2bbaf4a8e8954f0eefcc3a, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6188168583426811467, guid: 060549d44f2bbaf4a8e8954f0eefcc3a, type: 3}
+      propertyPath: m_Color.r
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
