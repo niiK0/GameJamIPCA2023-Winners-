@@ -17,7 +17,7 @@ public class PickupInput : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.layer != playerLayer) return;
+        if (collision.gameObject.layer != playerLayer && collision.gameObject.layer != LayerMask.NameToLayer("PlayerHeadset")) return;
         if (UI_Manager.instance.occupiedSlots >= UI_Manager.instance.keyUISlots.Length) return;
 
         var playerInput = collision.GetComponent<InputHolder>();
