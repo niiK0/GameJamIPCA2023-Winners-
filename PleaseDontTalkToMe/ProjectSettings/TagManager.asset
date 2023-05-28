@@ -19,7 +19,11 @@ TagManager:
   - Enemy
   - Phone
   - EnemyPhone
+<<<<<<< Updated upstream
   - PlayerHeadset
+=======
+  - Hole
+>>>>>>> Stashed changes
   - 
   - 
   - 

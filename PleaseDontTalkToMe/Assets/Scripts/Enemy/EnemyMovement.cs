@@ -98,7 +98,7 @@ public class EnemyMovement : MonoBehaviour
         //anim.SetTrigger("idle");
     }
 
-    private void EnterReturningState()
+    public void EnterReturningState()
     {
         state = EnemyState.Returning;
         moveDirection = startPosition.x < transform.position.x ? -1 : 1;
