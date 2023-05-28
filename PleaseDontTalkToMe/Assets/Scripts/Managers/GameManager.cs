@@ -20,6 +20,8 @@ public class GameManager : MonoBehaviour
     public float finalGameTime = 0f;
     public float finalAttempts = 0f;
 
+    public GameObject video;
+
     private float seconds, minutes;
 
     public Level[] levels;
@@ -54,7 +56,18 @@ public class GameManager : MonoBehaviour
             GetComponent<LoadingScreen>().LoadScene(currentLevel);
         }
 
+        if (SceneManager.GetActiveScene().buildIndex == 2)
+        {
+            video.gameObject.SetActive(true);
+        }
+
         Timer();
+    }
+
+    public void QuitGame()
+    {
+        UnityEditor.EditorApplication.isPlaying = false; // Stop play mode in the Unity Editor
+        Application.Quit(); // Quit the application in a built standalone executable
     }
 
     public LevelStartInputs GetCurrentLevelInputInfo()

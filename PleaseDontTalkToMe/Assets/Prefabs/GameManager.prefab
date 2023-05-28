@@ -45,12 +45,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91013b30b698fa2408b8fb86922b4701, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentLevel: 1
+  currentLevel: 0
   attemptsCount: 1
   restartCw: 5
   restartInternalCw: 0
   finalGameTime: 0
   finalAttempts: 0
+  video: {fileID: 0}
   levels:
   - id: 1
     name: Tutorial
