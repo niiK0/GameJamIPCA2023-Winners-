@@ -95,9 +95,9 @@ GameObject:
   - component: {fileID: 5174929130775736004}
   - component: {fileID: 5174929130775736007}
   - component: {fileID: 5174929130775736006}
-  - component: {fileID: 5174929130775736057}
   - component: {fileID: 5174929130775736056}
   - component: {fileID: 5174929130775736005}
+  - component: {fileID: 2044122537}
   m_Layer: 9
   m_Name: Enemy
   m_TagString: Untagged
@@ -162,8 +162,8 @@ SpriteRenderer:
   m_SortingLayerID: 1152953615
   m_SortingLayer: 2
   m_SortingOrder: 0
-  m_Sprite: {fileID: -9095717837082945937, guid: 207ee8102dd4143d288186ef0be518ee, type: 3}
-  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_Sprite: {fileID: -888397918, guid: 7c770f8d21bc7f94d97f51b48d2ac148, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -194,22 +194,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 4
---- !u!70 &5174929130775736057
-CapsuleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5174929130775736059}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_Size: {x: 1, y: 2}
-  m_Direction: 0
 --- !u!114 &5174929130775736056
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -222,17 +206,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8dc9522db05ebe14789df62990a79092, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  patrolSpeed: 1
-  chasingSpeed: 2
-  returningSpeed: 2
+  patrolSpeed: 0.5
+  chasingSpeed: 2.5
+  returningSpeed: 1.5
   chasePhoneSpeed: 2
   jumpForce: 4
-  detectionSize: {x: 3.44, y: 1}
+  detectionSize: {x: 7, y: 1}
   detectionLayerMask:
     serializedVersion: 2
     m_Bits: 128
   moveDirection: 1
-  timeToChangeDir: 2
+  timeToChangeDir: 2.5
   anim: {fileID: 0}
   state: 1
   player: {fileID: 0}
@@ -257,3 +241,29 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
+--- !u!61 &2044122537
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5174929130775736059}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.04324402, y: 0.05836749}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1.752, y: 2.72}
+    newSize: {x: 1, y: 2}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.72845566, y: 2.4700274}
+  m_EdgeRadius: 0

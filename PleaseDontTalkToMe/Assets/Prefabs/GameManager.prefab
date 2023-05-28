@@ -49,31 +49,29 @@ MonoBehaviour:
   attemptsCount: 1
   restartCw: 5
   restartInternalCw: 0
+  finalGameTime: 0
+  finalAttempts: 0
   gameTimeText: {fileID: 0}
+  attemptsText: {fileID: 0}
+  levelText: {fileID: 0}
   levels:
   - id: 1
     name: Tutorial
-    maxTime: 2
     levelInputInfo: {fileID: 11400000, guid: e15b841ca14c1374a807d7da61b6af52, type: 2}
   - id: 2
     name: Office
-    maxTime: 2
     levelInputInfo: {fileID: 11400000, guid: bfed1aa116f808642a388bccf67618f5, type: 2}
   - id: 3
     name: Hallway
-    maxTime: 2
     levelInputInfo: {fileID: 11400000, guid: 320e047ede784d8448c6a273f8e712f9, type: 2}
   - id: 4
     name: Lounge
-    maxTime: 2
     levelInputInfo: {fileID: 11400000, guid: e12fa1c556618d2408235fd419c29da0, type: 2}
   - id: 5
     name: Existencial Crisis
-    maxTime: 2
     levelInputInfo: {fileID: 11400000, guid: 13db7d55ac654be42b4e0aa827e1e931, type: 2}
   - id: 6
     name: THE FINAL BOSS
-    maxTime: 2
     levelInputInfo: {fileID: 11400000, guid: 3ac8103ac71357e48b39202fb8eaefc2, type: 2}
 --- !u!114 &3796042681299277653
 MonoBehaviour:
