@@ -17,8 +17,13 @@ public class GameManager : MonoBehaviour
 
     private float gameTime;
 
+    public float finalGameTime = 0f;
+    public float finalAttempts = 0f;
+
     private float seconds, minutes;
     public TextMeshProUGUI gameTimeText;
+    public TextMeshProUGUI attemptsText;
+    public TextMeshProUGUI levelText;
 
     public Level[] levels;
 
@@ -33,6 +38,7 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         gameTimeText.text = "00:00";
+        UpdateUI();
     }
 
     // Update is called once per frame
@@ -73,6 +79,18 @@ public class GameManager : MonoBehaviour
         restartInternalCw = restartCw;
         UI_Manager.instance.UnloadEveryKey();
         GetComponent<LoadingScreen>().LoadScene(currentLevel);
+        UpdateUI();
+    }
+
+    public void UpdateUI()
+    {
+        attemptsText.text = "Attempt " + attemptsCount.ToString();
+        levelText.text = "Level " + currentLevel + " - " + levels[currentLevel-1].name;
+    }
+
+    public void PlayerDied()
+    {
+        RetryLevel();
     }
 }
 
@@ -81,6 +99,5 @@ public struct Level
 {
     public int id;
     public string name;
-    public float maxTime;
     public LevelStartInputs levelInputInfo;
 }

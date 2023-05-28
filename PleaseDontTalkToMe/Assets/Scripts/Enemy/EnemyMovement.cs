@@ -23,7 +23,7 @@ public class EnemyMovement : MonoBehaviour
 
     public Vector2 detectionSize = new Vector2(7f, 1f);
     public LayerMask detectionLayerMask;
-    public float moveDirection = 1;
+    public float moveDirection = 1f;
 
     public float timeToChangeDir;
     private float changeDirectionTimer;
@@ -77,6 +77,9 @@ public class EnemyMovement : MonoBehaviour
                 break;
         }
 
+        if (moveDirection == -1) GetComponent<SpriteRenderer>().flipX = true;
+        else GetComponent<SpriteRenderer>().flipX = false;
+
         if (Physics2D.OverlapBox(transform.position, detectionSize, 0f, detectionLayerMask) != null)
         {
             if (state == EnemyState.Patroling || state == EnemyState.Returning)
@@ -102,20 +105,21 @@ public class EnemyMovement : MonoBehaviour
     {
         state = EnemyState.Returning;
         moveDirection = startPosition.x < transform.position.x ? -1 : 1;
-        //anim.SetTrigger("return");
+        anim.SetTrigger("return");
     }
 
     private void EnterPatrolState()
     {
         state = EnemyState.Patroling;
         changeDirectionTimer = timeToChangeDir;
-        //anim.SetTrigger("patrol");
+        anim.SetTrigger("patrol");
     }
 
     private void EnterChasingState()
     {
         state = EnemyState.Chasing;
-        //anim.SetTrigger("chasePlayer");
+        moveDirection = player.position.x < transform.position.x ? -1 : 1;
+        anim.SetTrigger("chasePlayer");
     }
 
     public void ExitPhoneChaseState()
@@ -129,7 +133,7 @@ public class EnemyMovement : MonoBehaviour
         {
             state = EnemyState.PhoneChasing;
             moveDirection = phoneTransform.position.x < transform.position.x ? -1 : 1;
-            //anim.SetTrigger("chasePhone");
+            anim.SetTrigger("chasePhone");
         }
     }
 
