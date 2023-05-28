@@ -5396,7 +5396,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   phoneGO: {fileID: 2860022025246936097, guid: e5e4d925fb3126d4cbe31d8e4bbb4f20, type: 3}
   firePoint: {fileID: 1782179450}
-  phoneCharges: 10
+  phoneCharges: 0
   minForce: 10
   maxForce: 100
   timeToMaxForce: 1

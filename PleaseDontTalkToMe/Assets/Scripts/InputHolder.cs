@@ -44,6 +44,8 @@ public class InputHolder : MonoBehaviour
     {
         switch (newInput)
         {
+            case InputFunction.Null:
+                return;
             case InputFunction.Jump:
                 UI_Manager.instance.AddKeyObjectToUi(jump);
                 jump.inputCount++;
@@ -73,6 +75,8 @@ public class InputHolder : MonoBehaviour
 
         switch (temp)
         {
+            case InputFunction.Null:
+                return;
             case InputFunction.Jump:
                 jump.inputCount--;
                 break;
@@ -119,5 +123,5 @@ public struct KeyObject
 
 public enum InputFunction
 {
-    Jump, Throw, MoveLeft, MoveRight
+    Null,Jump, Throw, MoveLeft, MoveRight
 }

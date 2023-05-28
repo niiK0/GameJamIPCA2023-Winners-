@@ -77,7 +77,7 @@ public class UI_Manager : MonoBehaviour
             }
 
         }
-
+        SendNullsToTheEnd();
         occupiedSlots = 0;
         phoneCharges.text = 0.ToString();
         UpdateUIView();
