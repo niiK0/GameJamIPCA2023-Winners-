@@ -3,9 +3,7 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags:
-  - GameManager
-  - UIManager
+  tags: []
   layers:
   - Default
   - TransparentFX
@@ -13,17 +11,13 @@ TagManager:
   - 
   - Water
   - UI
-  - Ground
-  - Player
-  - Tiles
-  - Enemy
-  - Phone
-  - EnemyPhone
-<<<<<<< Updated upstream
-  - PlayerHeadset
-=======
-  - Hole
->>>>>>> Stashed changes
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
   - 
   - 
   - 

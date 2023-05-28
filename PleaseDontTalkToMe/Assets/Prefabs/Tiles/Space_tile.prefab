@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8746984140607545341}
   - component: {fileID: 5621502902509973409}
   - component: {fileID: 7764170972036426236}
-  - component: {fileID: 1286445817902254218}
+  - component: {fileID: 2327917889578379844}
   m_Layer: 8
   m_Name: Space_tile
   m_TagString: Untagged
@@ -100,7 +100,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.01494801, y: 0.0030213594}
+  m_Offset: {x: 0.004778862, y: 0.011975408}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -111,7 +111,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 3.7832792, y: 0.862406}
+  m_Size: {x: 3.7383204, y: 0.7539823}
   m_EdgeRadius: 0
 --- !u!50 &7764170972036426236
 Rigidbody2D:
@@ -125,11 +125,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-<<<<<<< Updated upstream
-  m_Mass: 1
-=======
   m_Mass: 200
->>>>>>> Stashed changes
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 1
@@ -138,7 +134,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 0
---- !u!95 &1286445817902254218
+--- !u!95 &2327917889578379844
 Animator:
   serializedVersion: 5
   m_ObjectHideFlags: 0
