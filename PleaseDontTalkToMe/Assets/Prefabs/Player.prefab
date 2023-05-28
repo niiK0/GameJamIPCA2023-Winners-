@@ -5322,7 +5322,7 @@ MonoBehaviour:
   moveRight:
     keyCode: 100
     isAvailable: 0
-    function: 3
+    function: 4
     inputCount: 0
     uiView: {fileID: 21300000, guid: 5c518c0587562444488144a7a3320387, type: 3}
     resolution: {x: 80, y: 80}
@@ -5331,7 +5331,7 @@ MonoBehaviour:
   moveLeft:
     keyCode: 97
     isAvailable: 0
-    function: 2
+    function: 3
     inputCount: 0
     uiView: {fileID: 21300000, guid: 9b398d5f54250cf4f8ce715f2ad50eb7, type: 3}
     resolution: {x: 80, y: 80}
@@ -5340,7 +5340,7 @@ MonoBehaviour:
   jump:
     keyCode: 32
     isAvailable: 0
-    function: 0
+    function: 1
     inputCount: 0
     uiView: {fileID: 21300000, guid: 6ebecb9a7326df347b70d7b5bd38015e, type: 3}
     resolution: {x: 300, y: 80}
@@ -5349,7 +5349,7 @@ MonoBehaviour:
   throwObject:
     keyCode: 304
     isAvailable: 0
-    function: 1
+    function: 2
     inputCount: 0
     uiView: {fileID: 21300000, guid: 588703022241f7744a380f8970376891, type: 3}
     resolution: {x: 126.22222, y: 80}
